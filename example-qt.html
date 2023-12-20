@@ -1,0 +1,247 @@
+<!doctype html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+<title>Libdomain - свободная linux библиотека | BaseALT</title>
+<link rel="icon" type="image/png" sizes="16x16" href="images/icon16-1.png">
+<meta name="description" content="<Библиотека libDomain, ADMC, Базальт СПО (ALT Linux) - разработчик российских ОС Альт Рабочая станция, Альт Сервер, Альт Образование, Альт СП, Альт Виртуализация, Simply Linux.">
+<meta property="og:title" content="Российский разработчик операционных систем «Альт»">
+<meta property="og:image" content="https://www.basealt.ru/fileadmin/_processed_/b/2/csm_logo_eaa27cc079.png">
+<meta property="og:image:url" content="https://www.basealt.ru/fileadmin/_processed_/b/2/csm_logo_eaa27cc079.png">
+<meta property="og:image:width" content="121">
+<meta property="og:image:height" content="63">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BaseALT">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" sizes="16x16" 
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<link rel="icon" href="images/icon16-2.png" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="16x16" href="images/icon16-2.png">
+<link rel="stylesheet" href="style.css">
+<script src="js/menu.js"></script>
+
+</head>
+	
+<body>
+<main>
+  <nav class="navigation navbar navbar-expand-md justify-content-center mt-5 pt-5">
+    <button class="btn btn-primary d-flex d-md-none align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    
+          <span class="ms-1">MENU</span></button>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav navbar-inline mx-auto">
+        <li class="nav-item opacity-75"> <a class="nav-link" href="index.html"><span>Главная</span></a></li>
+        <li class="nav-item opacity-75"> <a class="nav-link" href="news.html"><span>Новости</span></a></li>
+        <li class="nav-item opacity-75"> <a class="nav-link" href="https://github.com/libdomain/libdomain" target="_blank"><span>Исходный&nbspкод</span></a></li>
+        <li class="nav-item active"> <a class="nav-link"><span>Примеры&nbspиспользования</span></a></li>
+	    <li class="nav-item opacity-75"> <a class="nav-link" href="docs.html"><span>Документация</span></a></li>
+        <li class="nav-item opacity-75"> <a class="nav-link" href="license.html"><span>Лицензия</span></a></li>
+		<li class="nav-item opacity-75"> <a class="nav-link" href="contact.html"><span>Контакты</span></a></li>
+        <li class="nav-item translation-nav"> <a class="active" href="index.html"><img src="images/ru.svg" alt="Russian"></a><a href="english/index.html"><img src="images/en.svg" alt="English"></a></li>
+      </ul>
+    </div>
+  </nav>
+	
+<section class="section intro-banner">
+    <div class="container">
+      <div>
+        <div class="col-lg-4 mx-auto text-center"><img src="images/logowht.svg" alt=""/>
+          </div>
+    </div></div>
+  </section>	
+	
+	
+	
+  <section class="section intro-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-left">
+<p class="lead"></p>
+	      <div class="content">
+			     <blockquote>
+                   <p>&nbsp; &nbsp;Ниже приведён пример программы на языке C, которая использует библиотеку libdomain для выполнения операции поиска LDAP. Программа устанавливает соединение с сервером LDAP и выполняет запрос на поиск для получения записи RootDSE в указанном каталоговом сервере.&nbsp;</p>
+                   <p>&nbsp;</p>
+                   <p>Запуск программы:&nbsp;</p>
+                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ ./libdomain-qt-sample </pre>
+                   <p>Будет открыто диалоговое окно, где пользователь может указать параметры подключения к серверу LDAP:&nbsp;</p>
+                   <p>&nbsp;</p>
+                   <img src="images/example-qt1.png" alt="Диалог подключения"/>
+                   <p> Основное окно программы:&nbsp;</p>
+                   <p>&nbsp;</p>
+                   <img src="images/example-qt2.png" alt="Основное окно программы"/>
+                   <p> Структура программы</p>
+                   <p>&nbsp;Программа состоит из следующих модулей:&nbsp;</p>
+                   <p>&nbsp; &nbsp;* MainWindow — класс, который инициализирует библиотеку libdomain. Следует обратить внимание, что новый цикл событий не запускается, а используется цикл событий qt. Для этого ничего не нужно делать дополнительно, достаточно проинициализировать библиотеку.</p>
+                 </blockquote>
+		<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;ldap.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;talloc.h&gt;</span></span>
+ 
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">extern</span> <span class="hljs-string" style="color: rgb(255, 85, 255);">"C"</span>
+{
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/common.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/domain.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/domain_p.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/directory.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/entry.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/connection_state_machine.h&gt;</span></span>
+}
+ 
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">class</span> CallbackHelper : <span class="hljs-keyword" style="color: rgb(255, 255, 85);">public</span> QObject
+{
+    Q_OBJECT
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">public</span>:
+    <span class="hljs-function" style="color: rgb(255, 255, 85);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">explicit</span> <span class="hljs-title" style="color: rgb(170, 170, 170);">CallbackHelper</span><span class="hljs-params" style="color: rgb(136, 136, 255);">(QObject* parent)</span>
+        : <span class="hljs-title" style="color: rgb(170, 170, 170);">QObject</span><span class="hljs-params" style="color: rgb(136, 136, 255);">(parent)</span>
+    </span>{}
+ 
+signals:
+    <span class="hljs-function" style="color: rgb(255, 255, 85);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span> <span class="hljs-title" style="color: rgb(170, 170, 170);">ready</span><span class="hljs-params" style="color: rgb(136, 136, 255);">()</span></span>;
+};
+ 
+CallbackHelper* helper = <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>;
+ 
+<span class="hljs-function" style="color: rgb(255, 255, 85);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span> <span class="hljs-title" style="color: rgb(170, 170, 170);">connection_on_update</span><span class="hljs-params" style="color: rgb(136, 136, 255);">(verto_ctx *ctx, verto_ev *ev)</span>
+</span>{
+    Q_UNUSED(ctx);
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">ldap_connection_ctx_t</span>* connection = <span class="hljs-keyword" style="color: rgb(255, 255, 85);">static_cast</span>&lt;<span class="hljs-keyword" style="color: rgb(255, 255, 85);">ldap_connection_ctx_t</span>*&gt;(verto_get_private(ev));
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">if</span> (connection-&gt;state_machine-&gt;state == LDAP_CONNECTION_STATE_RUN)
+    {
+        verto_del(ev);
+ 
+        <span class="hljs-keyword" style="color: rgb(255, 255, 85);">if</span> (helper)
+        {
+            helper-&gt;ready();
+        }
+    }
+}
+ 
+MainWindow::MainWindow(ConnectionSettings *settings, QWidget *parent)
+    : QMainWindow(parent)
+    , ui(<span class="hljs-keyword" style="color: rgb(255, 255, 85);">new</span> Ui::MainWindow)
+{
+    helper = <span class="hljs-keyword" style="color: rgb(255, 255, 85);">new</span> CallbackHelper(<span class="hljs-keyword" style="color: rgb(255, 255, 85);">this</span>);
+ 
+    TALLOC_CTX* talloc_ctx = talloc_new(<span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>);
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">const</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">int</span> update_interval = <span class="hljs-number" style="color: rgb(255, 85, 255);">10</span>;
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">ld_config_t</span> *config = <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>;
+    config = ld_create_config(talloc_ctx, settings-&gt;hostname, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, LDAP_VERSION3, settings-&gt;bind_dn,
+                              settings-&gt;username, settings-&gt;password, !settings-&gt;useSasl, <span class="hljs-literal" style="color: rgb(255, 85, 255);">false</span>, settings-&gt;useSasl, <span class="hljs-literal" style="color: rgb(255, 85, 255);">false</span>,
+                              update_interval, talloc_strdup(talloc_ctx, <span class="hljs-string" style="color: rgb(255, 85, 255);">""</span>), talloc_strdup(talloc_ctx, <span class="hljs-string" style="color: rgb(255, 85, 255);">""</span>), talloc_strdup(talloc_ctx, <span class="hljs-string" style="color: rgb(255, 85, 255);">""</span>));
+ 
+    LDHandle *handle = <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>;
+    ld_init(&amp;handle, config);
+ 
+    ld_install_default_handlers(handle);
+    ld_install_handler(handle, connection_on_update, update_interval);
+ 
+    ui-&gt;setupUi(<span class="hljs-keyword" style="color: rgb(255, 255, 85);">this</span>);
+ 
+    connect(helper, &amp;CallbackHelper::ready, [&amp;, handle]()
+    {
+        ui-&gt;tableView-&gt;setModel(<span class="hljs-keyword" style="color: rgb(255, 255, 85);">new</span> AttributesModel(handle, <span class="hljs-keyword" style="color: rgb(255, 255, 85);">this</span>));
+    });
+}</pre>
+			  
+			  
+			<blockquote>
+                   <p>&nbsp; &nbsp;* AttributesModel — класс унаследованный от QStandardItemModel. Данный класс осуществляет основную работу. Он отправляет запрос к LDAP серверу, получая от него список атрибутов записи RootDSE. В конструкторе создаётся поисковый запрос для libdomain и запрашивается список атрибутов при помощи функции search_callback. Как только search_callback вызовет сигнал AttributesModelPrivate::ready, начинается заполнение модели данными. Предполагается, что к этому моменту уже есть проинициализированный указатель библиотеки ldhandle и соединение уже установлено.</p>
+            </blockquote>
+			  
+			  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">d-&gt;handle = ldhandle;
+ 
+    privateData = d.get();
+ 
+    search(d-&gt;handle-&gt;connection_ctx,
+           <span class="hljs-string" style="color: rgb(255, 85, 255);">""</span>,
+           LDAP_SCOPE_BASE,
+           <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>,
+           <span class="hljs-keyword" style="color: rgb(255, 255, 85);">const_cast</span>&lt;<span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span>**&gt;(LDAP_ATTRS),
+           <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>,
+           search_callback);
+ 
+    connect(d.get(), &amp;AttributesModelPrivate::ready, [&amp;]()
+    {
+        <span class="hljs-keyword" style="color: rgb(255, 255, 85);">for</span> (<span class="hljs-keyword" style="color: rgb(255, 255, 85);">size_t</span> i = <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>; i &lt; d-&gt;attributes.size(); ++i)
+        {
+            QStandardItem* nameItem = <span class="hljs-keyword" style="color: rgb(255, 255, 85);">new</span> QStandardItem();
+            nameItem-&gt;setText(d-&gt;attributes[i].name);
+ 
+            QStandardItem* valueItem = <span class="hljs-keyword" style="color: rgb(255, 255, 85);">new</span> QStandardItem();
+            valueItem-&gt;setText(d-&gt;attributes[i].values.join(<span class="hljs-string" style="color: rgb(255, 85, 255);">";"</span>));
+ 
+            <span class="hljs-keyword" style="color: rgb(255, 255, 85);">this</span>-&gt;appendRow({nameItem, valueItem});
+        }
+    });</pre>
+			  
+			<blockquote>
+              <p>&nbsp; &nbsp;* ConnectionDialog — содержит диалог настроек подключения. При успешном заполнении он создаёт структуру ConnectionSettings.</p>
+              <p></p>
+              <p>&nbsp; &nbsp;* ConnectionSettings — содержит настройки подключения такие как: сервер, имя пользователя, пароль, bind_dn, использование интерактивного подключения.&nbsp;</p>
+                   <p>&nbsp;</p>
+              <p>Обработка ошибок&nbsp;</p>
+              <p>Обработка ошибок подключения осуществляется библиотекой libdomain автоматически при помощи встроенных в неё функций. При желании можно установить свой обработчик при помощи функции ld_install_error_handler(handle, connection_on_error), передав ей callback нужный connection_on_error.&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>Компиляция&nbsp;</p>
+              <p><a href="https://github.com/libdomain/libdomain-qt-sample/blob/master/README.RU.md" target="_blank" >Ссылка на пример</a></p>
+              <p>Для компиляции программы необходимо установить библиотеку libdomain:&nbsp;</p>
+              <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-comment" style="color: rgb(85, 255, 255);"># apt-get install libdomain-devel libconfig-devel cmake rpm-build qt5-base-devel</span></pre>
+              <p>Далее следует склонировать пример:&nbsp;</p>
+              <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ git <span class="hljs-built_in" style="color: rgb(255, 85, 255);">clone</span> https://github.com/libdomain/libdomain-qt-sample</pre>
+              <p>Команда компиляции:&nbsp;</p>
+                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ mkdir build &amp;&amp; <span class="hljs-built_in" style="color: rgb(255, 85, 255);">cd</span> build &amp;&amp; cmake .. &amp;&amp; make -j `nproc`</pre>
+            </blockquote>
+			  
+			  
+			
+		  </div>  
+		 
+		</div>
+      </div>
+    </div>
+  </section>
+ 
+</main>
+<footer class="section pb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+	          	<table width="80%" border="0" align="center">
+  <tbody>
+    <tr>
+      <th scope="col" width="25%" align="center"><img src="images/basealt.png" alt=""/></th>
+      <th scope="col" width="75%"><p>Тел.: +7 (495) 123-47-99<br>
+                    	mail: org@basealt.ru<br>
+                   	 	Москва, ул. Бутырская, д. 75<br>
+                      	ИНН: 7714350892</p></th>
+    </tr>
+  </tbody>
+</table>
+				<table width="80%" border="0" align="center">
+  <tbody>
+    <tr>
+      <th scope="col" align="center"><p>© ООО «Базальт СПО» — российский разработчик операционных систем «Альт», 2015–2023</p></th>
+    </tr>
+  </tbody>
+</table>
+		<table width="80%" border="0" align="center">
+  <tbody>
+    <tr>
+      <th scope="col" align="center"><p> <a href="https://vk.com/altlinux" target="_blank"> <img src="images/icon26.png" alt="VK"></a>
+					  <a href="https://zen.yandex.ru/id/621e0fc88b26266f04745c3f" target="_blank"> <img src="images/zen_yandex_icon_grey.svg" style="width:14px !important; height:14px !important;" alt="Яндекс Дзен"></a>
+					  <a href="https://www.youtube.com/channel/UCtCfzqL49AkFYQ7JQcL_iSw" target="_blank"> <img src="images/icon29.png" alt="Youtube"></a>
+					  <a href="/feed.rss"> <img src="images/icon30.png" alt="RSS"></a>
+					  <a href="https://teleg.one/basealtspo" target="_blank"> <img src="images/icon31.png" alt="Telegram"></a> <a href="https://forum.altlinux.org/" target="_blank"> <img src="images/icon32.png" alt="forum.altlinux.org"></a></p></th>
+    </tr>
+  </tbody>
+</table>
+
+				
+		</div>  </div>  </div>         
+				
+				
+  
+</footer>
+</body>

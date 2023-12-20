@@ -1,0 +1,250 @@
+<!doctype html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+<title>Libdomain - свободная linux библиотека | BaseALT</title>
+<link rel="icon" type="image/png" sizes="16x16" href="images/icon16-1.png">
+<meta name="description" content="<Библиотека libDomain, ADMC, Базальт СПО (ALT Linux) - разработчик российских ОС Альт Рабочая станция, Альт Сервер, Альт Образование, Альт СП, Альт Виртуализация, Simply Linux.">
+<meta property="og:title" content="Российский разработчик операционных систем «Альт»">
+<meta property="og:image" content="https://www.basealt.ru/fileadmin/_processed_/b/2/csm_logo_eaa27cc079.png">
+<meta property="og:image:url" content="https://www.basealt.ru/fileadmin/_processed_/b/2/csm_logo_eaa27cc079.png">
+<meta property="og:image:width" content="121">
+<meta property="og:image:height" content="63">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BaseALT">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" sizes="16x16" 
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<link rel="icon" href="images/icon16-2.png" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="16x16" href="images/icon16-2.png">
+<link rel="stylesheet" href="style.css">
+<script src="js/menu.js"></script>
+
+</head>
+	
+<body>
+<main>
+  <nav class="navigation navbar navbar-expand-md justify-content-center mt-5 pt-5">
+    <button class="btn btn-primary d-flex d-md-none align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    
+          <span class="ms-1">MENU</span></button>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav navbar-inline mx-auto">
+        <li class="nav-item opacity-75"> <a class="nav-link" href="index.html"><span>Главная</span></a></li>
+        <li class="nav-item opacity-75"> <a class="nav-link" href="news.html"><span>Новости</span></a></li>
+        <li class="nav-item opacity-75"> <a class="nav-link" href="https://github.com/libdomain/libdomain" target="_blank"><span>Исходный&nbspкод</span></a></li>
+        <li class="nav-item active"> <a class="nav-link"><span>Примеры&nbspиспользования</span></a></li>
+	    <li class="nav-item opacity-75"> <a class="nav-link" href="docs.html"><span>Документация</span></a></li>
+        <li class="nav-item opacity-75"> <a class="nav-link" href="license.html"><span>Лицензия</span></a></li>
+		<li class="nav-item opacity-75"> <a class="nav-link" href="contact.html"><span>Контакты</span></a></li>
+        <li class="nav-item translation-nav"> <a class="active" href="index.html"><img src="images/ru.svg" alt="Russian"></a><a href="english/index.html"><img src="images/en.svg" alt="English"></a></li>
+      </ul>
+    </div>
+  </nav>
+	
+<section class="section intro-banner">
+    <div class="container">
+      <div>
+        <div class="col-lg-4 mx-auto text-center"><img src="images/logowht.svg" alt=""/>
+          </div>
+    </div></div>
+  </section>	
+	
+	
+	
+  <section class="section intro-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-left">
+<p class="lead"></p>
+	      <div class="content">
+			     <blockquote>
+                   <p>Как построить библиотеку libdomain и модули PowerShell&nbsp;</p>
+                   <p>&nbsp; 1. Установка PowerShell на Linux&nbsp;</p>
+                   <p>Чтобы построить библиотеку libdomain и модули PowerShell на Linux, сначала необходимо установить PowerShell.&nbsp;</p>
+                   <p>На дистрибутивах «Альт» для этого достаточно установить пакет powershell:&nbsp;</p>
+                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">apt-get <span class="hljs-keyword" style="color: rgb(255, 255, 85);">install</span> powershell</pre>
+                   <p>На других дистрибутивах можно выполнить следующие шаги:&nbsp;</p>
+                   <p>&nbsp; 1. Скачать пакет для требуемого дистрибутива с официальной страницы выпусков PowerShell на GitHub: Релизы PowerShell&nbsp;</p>
+                   <p>&nbsp; 2. Установить пакет, следуя инструкциям по установке, предоставленным для конкретного дистрибутива.&nbsp;</p>
+                   <p>&nbsp;</p>
+                   <p>&nbsp; 2. Установка .NET и SDK на Linux&nbsp;</p>
+<p>Следующий шаг после установки PowerShell — настройка среды .NET и необходимых SDK.&nbsp;</p>
+                   <p>На дистрибутивах «Альт» для этого достаточно установить пакет dotnet-sdk-7.0:&nbsp;</p>
+                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">apt-get <span class="hljs-keyword" style="color: rgb(255, 255, 85);">install</span> dotnet-sdk-<span class="hljs-number" style="color: rgb(255, 85, 255);">7.0</span></pre>
+                   <p>На других дистрибутивах можно выполнить следующие шаги:&nbsp;</p>
+                   <p>&nbsp; 1. Скачать SDK .NET для Linux с официальной страницы загрузки .NET: Загрузка .NET&nbsp;</p>
+                   <p>&nbsp; 2. Установить SDK .NET для Linux, следуя дополнительным инструкциям по установке, предоставленным для конкретного дистрибутива.&nbsp;</p>
+                   <p>&nbsp;</p>
+                   <p>&nbsp; 3. Построение нативного модуля&nbsp;</p>
+<p>Для построения нативного модуля для libdomain необходимо выполнить следующие команды:&nbsp;</p>
+                  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cd native &amp;&amp; mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make -j `nproc`</pre>
+                   <p>&nbsp; 4. Построение модуля на C#&nbsp;</p>
+                   <p>Построение модуля на C# для PowerShell включает использование .NET SDK. Базовый план:</p>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cd src &amp;&amp; dotnet build</pre>
+                   <p>&nbsp; 5. Объединение модулей&nbsp;</p>
+                   <p>После построения нативного и C# модулей, возможно, потребуется их объединить.&nbsp;</p>
+                   <p>Для этого необходимо скопировать бинарные модули в папку bin:&nbsp;</p>
+                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-comment" style="color: rgb(85, 255, 255);"># cp native/build/src/libdomain_wrapper.so ./bin/ &amp;&amp; cp src/bin/Debug/net7.0/LibDomain.dll ./bin/</span></pre>
+          </blockquote>
+			
+			<blockquote>
+              <p>&nbsp; &nbsp;Как использовать&nbsp;</p>
+              <p>Запуск сценариев&nbsp;</p>
+              <p>Для запуска сценариев следует запустить PowerShell:&nbsp;</p>
+              <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">powershell</pre>
+              <p>И выполнить команды:&nbsp;</p>
+              <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">Import-Module ./module/LibDomain.psm1 
+Get-RootDSE</pre>
+				
+			  <p> </p>
+				
+            <img src="images/example-ps.png" alt=""/>
+			  <p> <a href="https://github.com/libdomain/libdomain-powershell-sample" target="_blank">Программа</a> состоит из следующих модулей:&nbsp;</p>
+			  <p>&nbsp; 1. LibDomain.dll. Обёртка для нативной библиотеки libdomain_wrapper.so предоставляет возможность импорта функций из нативной библиотеки. Исходные коды для этого модуля находятся в каталоге src.&nbsp;</p>
+            </blockquote>
+			  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">using</span> System;
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">using</span> System.Runtime.InteropServices;
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">namespace</span> LibDomain
+{
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">public</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">class</span> Native
+    {
+        [DllImport(<span class="hljs-string" style="color: rgb(255, 85, 255);">"libdomain_wrapper.so"</span>)]
+        <span class="hljs-function" style="color: rgb(255, 255, 85);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">public</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">extern</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">int</span> <span class="hljs-title" style="color: rgb(170, 170, 170);">get_root_dse</span><span class="hljs-params" style="color: rgb(136, 136, 255);">()</span></span>;
+    }
+}</pre>
+			  
+			  
+			  
+			  <blockquote>
+    <p>&nbsp; 2. libdomain_wapper.so. Этот модуль загружает libdomain и предоставляет функцию get_root_dse. Эта функция затем вызывается из LibDomain.dll. Модуль находится в каталоге native.</p>
+                                
+          </blockquote>
+			  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/common.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/domain.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/directory.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/entry.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/connection_state_machine.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdbool.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;talloc.h&gt;</span></span>
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span>* LDAP_DIRECTORY_ATTRS[] = { <span class="hljs-string" style="color: rgb(255, 85, 255);">"*"</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"+"</span>, <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span> };
+<span class="hljs-function" style="color: rgb(255, 255, 85);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span> <span class="hljs-title" style="color: rgb(170, 170, 170);">exit_callback</span><span class="hljs-params" style="color: rgb(136, 136, 255);">(verto_ctx *ctx, verto_ev *ev)</span>
+</span>{
+    (<span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span>) ctx;
+    (<span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span>) ev;
+    verto_break(ctx);
+}
+<span class="hljs-function" style="color: rgb(255, 255, 85);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">enum</span> OperationReturnCode <span class="hljs-title" style="color: rgb(170, 170, 170);">connection_on_error</span><span class="hljs-params" style="color: rgb(136, 136, 255);">(<span class="hljs-keyword" style="color: rgb(255, 255, 85);">int</span> rc, <span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span>* unused_a, <span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span>* connection)</span>
+</span>{
+    (<span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span>)(unused_a);
+    verto_break(((<span class="hljs-keyword" style="color: rgb(255, 255, 85);">ldap_connection_ctx_t</span>*)connection)-&gt;base);
+    <span class="hljs-built_in" style="color: rgb(255, 85, 255);">fprintf</span>(<span class="hljs-built_in" style="color: rgb(255, 85, 255);">stderr</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"Unable to perform operation!\n"</span>);
+    <span class="hljs-built_in" style="color: rgb(255, 85, 255);">exit</span>(EXIT_FAILURE);
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">return</span> RETURN_CODE_SUCCESS;
+}
+<span class="hljs-function" style="color: rgb(255, 255, 85);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span> <span class="hljs-title" style="color: rgb(170, 170, 170);">connection_on_update</span><span class="hljs-params" style="color: rgb(136, 136, 255);">(verto_ctx *ctx, verto_ev *ev)</span>
+</span>{
+    (<span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span>)(ctx);
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">struct</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">ldap_connection_ctx_t</span>* connection = verto_get_private(ev);
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">if</span> (connection-&gt;state_machine-&gt;state == LDAP_CONNECTION_STATE_RUN)
+    {
+        verto_del(ev);
+        search(connection, <span class="hljs-string" style="color: rgb(255, 85, 255);">""</span>, LDAP_SCOPE_BASE,
+               <span class="hljs-string" style="color: rgb(255, 85, 255);">"(objectClass=*)"</span>, LDAP_DIRECTORY_ATTRS, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>);
+    }
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">if</span> (connection-&gt;state_machine-&gt;state == LDAP_CONNECTION_STATE_ERROR)
+    {
+        verto_break(ctx);
+        <span class="hljs-built_in" style="color: rgb(255, 85, 255);">fprintf</span>(<span class="hljs-built_in" style="color: rgb(255, 85, 255);">stderr</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"Error encountered during bind!\n"</span>);
+    }
+}
+<span class="hljs-function" style="color: rgb(255, 255, 85);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">int</span> <span class="hljs-title" style="color: rgb(170, 170, 170);">get_root_dse</span><span class="hljs-params" style="color: rgb(136, 136, 255);">()</span>
+</span>{
+    TALLOC_CTX* talloc_ctx = talloc_new(<span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>);
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span> *ldap_server   = <span class="hljs-string" style="color: rgb(255, 85, 255);">"ldap://127.0.0.1:3890"</span>;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span> *ldap_username = <span class="hljs-string" style="color: rgb(255, 85, 255);">"admin"</span>;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span> *ldap_password = <span class="hljs-string" style="color: rgb(255, 85, 255);">"password"</span>;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span> *ldap_bind_dn  = <span class="hljs-string" style="color: rgb(255, 85, 255);">"dc=domain,dc=alt"</span>;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">const</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">int</span> update_interval = <span class="hljs-number" style="color: rgb(255, 85, 255);">1000</span>;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">ld_config_t</span> *config = <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>;
+    config = ld_create_config(talloc_ctx, ldap_server, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, LDAP_VERSION3, ldap_bind_dn,
+                              ldap_username, ldap_password, <span class="hljs-literal" style="color: rgb(255, 85, 255);">true</span>, <span class="hljs-literal" style="color: rgb(255, 85, 255);">false</span>, <span class="hljs-literal" style="color: rgb(255, 85, 255);">false</span>, <span class="hljs-literal" style="color: rgb(255, 85, 255);">true</span>,
+                              update_interval, <span class="hljs-string" style="color: rgb(255, 85, 255);">""</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">""</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">""</span>);
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">const</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">int</span> exit_time = <span class="hljs-number" style="color: rgb(255, 85, 255);">10000</span>;
+    LDHandle *handle = <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>;
+    ld_init(&amp;handle, config);
+    ld_install_default_handlers(handle);
+    ld_install_handler(handle, connection_on_update, update_interval);
+    ld_install_handler(handle, exit_callback, exit_time);
+    ld_install_error_handler(handle, connection_on_error);
+    ld_exec(handle);
+    ld_free(handle);
+    talloc_free(talloc_ctx);
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">return</span> <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>;
+}</pre>
+			  
+			  
+			  <blockquote>
+    <p>&nbsp; &nbsp;3. Сценарии PowerShell. Сценарий импортирует LibDomain.dll и вызывает [LibDomain.Native]::get_root_dse() из него. Сценарии находятся в каталоге module.</p>
+                                  </blockquote>
+			  
+			  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">using</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">namespace</span> System.Management.Automation
+$importModule = Get-Command -Name Import-Module -Module Microsoft.PowerShell.Core
+&amp;$importModule ([IO.Path]::Combine($PSScriptRoot, <span class="hljs-string" style="color: rgb(255, 85, 255);">'..'</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">'bin'</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">'LibDomain.dll'</span>)) -ErrorAction Stop
+Function Get-RootDSE {
+    &lt;#
+    .SYNOPSIS
+    Gets the RootDSE from LDAP server.
+    #&gt;
+    $rootDSE = [LibDomain.Native]::get_root_dse()
+}</pre>
+		
+		  </div>  
+		 
+		</div>
+      </div>
+    </div>
+  </section>
+ 
+</main>
+<footer class="section pb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+	          	<table width="80%" border="0" align="center">
+  <tbody>
+    <tr>
+      <th scope="col" width="25%" align="center"><img src="images/basealt.png" alt=""/></th>
+      <th scope="col" width="75%"><p>Тел.: +7 (495) 123-47-99<br>
+                    	mail: org@basealt.ru<br>
+                   	 	Москва, ул. Бутырская, д. 75<br>
+                      	ИНН: 7714350892</p></th>
+    </tr>
+  </tbody>
+</table>
+				<table width="80%" border="0" align="center">
+  <tbody>
+    <tr>
+      <th scope="col" align="center"><p>© ООО «Базальт СПО» — российский разработчик операционных систем «Альт», 2015–2023</p></th>
+    </tr>
+  </tbody>
+</table>
+		<table width="80%" border="0" align="center">
+  <tbody>
+    <tr>
+      <th scope="col" align="center"><p> <a href="https://vk.com/altlinux" target="_blank"> <img src="images/icon26.png" alt="VK"></a>
+					  <a href="https://zen.yandex.ru/id/621e0fc88b26266f04745c3f" target="_blank"> <img src="images/zen_yandex_icon_grey.svg" style="width:14px !important; height:14px !important;" alt="Яндекс Дзен"></a>
+					  <a href="https://www.youtube.com/channel/UCtCfzqL49AkFYQ7JQcL_iSw" target="_blank"> <img src="images/icon29.png" alt="Youtube"></a>
+					  <a href="/feed.rss"> <img src="images/icon30.png" alt="RSS"></a>
+					  <a href="https://teleg.one/basealtspo" target="_blank"> <img src="images/icon31.png" alt="Telegram"></a> <a href="https://forum.altlinux.org/" target="_blank"> <img src="images/icon32.png" alt="forum.altlinux.org"></a></p></th>
+    </tr>
+  </tbody>
+</table>
+
+				
+		</div>  </div>  </div>         
+				
+				
+  
+</footer>
+</body>
