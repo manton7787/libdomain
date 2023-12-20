@@ -1,0 +1,333 @@
+<!doctype html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+<title>Libdomain - свободная linux библиотека | BaseALT</title>
+<link rel="icon" type="image/png" sizes="16x16" href="../images/icon16-1.png">
+<meta name="description" content="<Библиотека libDomain, ADMC, Базальт СПО (ALT Linux) - разработчик российских ОС Альт Рабочая станция, Альт Сервер, Альт Образование, Альт СП, Альт Виртуализация, Simply Linux.">
+<meta property="og:title" content="Российский разработчик операционных систем «Альт»">
+<meta property="og:image" content="https://www.basealt.ru/fileadmin/_processed_/b/2/csm_logo_eaa27cc079.png">
+<meta property="og:image:url" content="https://www.basealt.ru/fileadmin/_processed_/b/2/csm_logo_eaa27cc079.png">
+<meta property="og:image:width" content="121">
+<meta property="og:image:height" content="63">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BaseALT">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" sizes="16x16" 
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<link rel="icon" href="../images/icon16-2.png" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="16x16" href="../images/icon16-2.png">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../stylecode.css">
+<script src="../js/menu.js"></script>
+
+</head>
+	
+<body>
+<main>
+  <nav class="navigation navbar navbar-expand-md justify-content-center mt-5 pt-5">
+    <button class="btn btn-primary d-flex d-md-none align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    
+          <span class="ms-1">MENU</span></button>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav navbar-inline mx-auto">
+         <li class="nav-item opacity-75"> <a class="nav-link" href="index.html"><span>Main</span></a></li>
+        <li class="nav-item opacity-75"> <a class="nav-link" href="news.html"><span>News</span></a></li>
+        <li class="nav-item opacity-75"> <a class="nav-link" href="https://github.com/libdomain/libdomain" target="_blank"><span>Sources</span></a></li>
+        <li class="nav-item active"> <a class="nav-link"><span>Examples</span></a></li>
+	    <li class="nav-item opacity-75"> <a class="nav-link" href="https://libdomain.github.io/libdomain/files.html" target="_blank"><span>Documents</span></a></li>
+        <li class="nav-item opacity-75"> <a class="nav-link" href="license.html"><span>License</span></a></li>
+		<li class="nav-item opacity-75"> <a class="nav-link" href="contact.html"><span>Contacts</span></a></li>
+    <li class="nav-item translation-nav"> <a href="../index.html"><img src="../images/ru.svg" alt="Russian"></a><a class="active"><img src="../images/en.svg" alt="English"></a></li>
+      </ul>
+    </div>
+  </nav>
+	
+<section class="section intro-banner">
+    <div class="container">
+      <div>
+        <div class="col-lg-4 mx-auto text-center"><img src="../images/logowht.svg" alt=""/>
+          </div>
+    </div></div>
+  </section>	
+	
+	
+	
+  <section class="section intro-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-left">
+<p class="lead"></p>
+	      <div class="content">
+			     <blockquote>
+                   <p>&nbsp; &nbsp; The provided example is a C program that demonstrates the use of the libdomain library to perform an LDAP search operation. The program establishes a connection to the LDAP server and executes a search in the specified directory server.</p>
+                   <p>&nbsp; &nbsp; The program takes command-line arguments to specify LDAP server connection parameters and search parameters:</p>
+                   <p>&nbsp;</p>
+<p><pre><code>$ ./libdomain-c-sample --host ldap://dc.example.org:389 --user administrator --pass password --bind "dc=example,dc=org" --sasl</code></pre></p>
+                   <p>&nbsp; &nbsp; Command Line Options&nbsp; :</p>
+                   <p>&nbsp; &nbsp; &nbsp; &nbsp;* --host (-h) — specifies the LDAP server in the format "protocol://address:port," for example, "ldap://example.org:389";</p>
+                   <p>&nbsp; &nbsp; &nbsp; &nbsp;* --user (-u) — specifies the LDAP username;</p>
+                   <p>&nbsp; &nbsp; &nbsp; &nbsp;* --pass (-w) — specifies the LDAP password;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;* --bind (-b) — specifies the Distinguished Name (DN) for LDAP binding, for example, "dc=example,dc=org";</p>
+                   <p>&nbsp; &nbsp; &nbsp; &nbsp;* --sasl (-s) — enables the use of SASL binding.</p>
+
+          </blockquote>
+			<p>
+			<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;argp.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/domain.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/directory.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/entry.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;libdomain/connection_state_machine.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdbool.h&gt;</span></span>
+<span class="hljs-meta" style="color: rgb(85, 255, 255);">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;talloc.h&gt;</span></span>
+ 
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span>* LDAP_DIRECTORY_ATTRS[] = { <span class="hljs-string" style="color: rgb(255, 85, 255);">"objectClass"</span>, <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span> };
+ 
+<span class="hljs-function" style="color: rgb(255, 255, 85);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span> <span class="hljs-title" style="color: rgb(170, 170, 170);">exit_callback</span><span class="hljs-params" style="color: rgb(136, 136, 255);">(verto_ctx *ctx, verto_ev *ev)</span>
+</span>{
+    (<span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span>) ctx;
+    (<span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span>) ev;
+ 
+    verto_break(ctx);
+}
+ 
+<span class="hljs-function" style="color: rgb(255, 255, 85);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">enum</span> OperationReturnCode <span class="hljs-title" style="color: rgb(170, 170, 170);">connection_on_error</span><span class="hljs-params" style="color: rgb(136, 136, 255);">(<span class="hljs-keyword" style="color: rgb(255, 255, 85);">int</span> rc, <span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span>* unused_a, <span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span>* connection)</span>
+</span>{
+    (<span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span>)(unused_a);
+ 
+    verto_break(((<span class="hljs-keyword" style="color: rgb(255, 255, 85);">ldap_connection_ctx_t</span>*)connection)-&gt;base);
+ 
+    error(<span class="hljs-string" style="color: rgb(255, 85, 255);">"Unable to perform operation!\n"</span>);
+ 
+    <span class="hljs-built_in" style="color: rgb(255, 85, 255);">exit</span>(EXIT_FAILURE);
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">return</span> RETURN_CODE_SUCCESS;
+}
+ 
+<span class="hljs-function" style="color: rgb(255, 255, 85);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span> <span class="hljs-title" style="color: rgb(170, 170, 170);">connection_on_update</span><span class="hljs-params" style="color: rgb(136, 136, 255);">(verto_ctx *ctx, verto_ev *ev)</span>
+</span>{
+    (<span class="hljs-keyword" style="color: rgb(255, 255, 85);">void</span>)(ctx);
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">struct</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">ldap_connection_ctx_t</span>* connection = verto_get_private(ev);
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">if</span> (connection-&gt;state_machine-&gt;state == LDAP_CONNECTION_STATE_RUN)
+    {
+        verto_del(ev);
+ 
+        search(connection, <span class="hljs-string" style="color: rgb(255, 85, 255);">"dc=domain,dc=alt"</span>, LDAP_SCOPE_SUBTREE,
+               <span class="hljs-string" style="color: rgb(255, 85, 255);">"(objectClass=*)"</span>, LDAP_DIRECTORY_ATTRS, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>);
+    }
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">if</span> (connection-&gt;state_machine-&gt;state == LDAP_CONNECTION_STATE_ERROR)
+    {
+        verto_break(ctx);
+ 
+        error(<span class="hljs-string" style="color: rgb(255, 85, 255);">"Error encountered during bind!\n"</span>);
+    }
+}
+ 
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">const</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span> *argp_program_version = <span class="hljs-string" style="color: rgb(255, 85, 255);">"1.0.0"</span>;
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">const</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span> *argp_program_bug_address = <span class="hljs-string" style="color: rgb(255, 85, 255);">"https://bugzilla.altlinux.org"</span>;
+ 
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span> doc[] = <span class="hljs-string" style="color: rgb(255, 85, 255);">"Libdomain get RootDSE sample."</span>;
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span> args_doc[] = <span class="hljs-string" style="color: rgb(255, 85, 255);">"[HOSTNAME] [BINDDN] &lt;USERNAME&gt; &lt;PASSWORD&gt; &lt;USE_SASL&gt;"</span>;
+ 
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">struct</span> argp_option options[] =
+{
+    { <span class="hljs-string" style="color: rgb(255, 85, 255);">"host"</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">'h'</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"HOST"</span>, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"Host. Use protocol://adress:port format e.g. ldap://dc.example.org:389."</span>},
+    { <span class="hljs-string" style="color: rgb(255, 85, 255);">"user"</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">'u'</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"USER"</span>, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"User name."</span>},
+    { <span class="hljs-string" style="color: rgb(255, 85, 255);">"pass"</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">'w'</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"PASS"</span>, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"Password."</span>},
+    { <span class="hljs-string" style="color: rgb(255, 85, 255);">"sasl"</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">'s'</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"SASL"</span>, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"Whether or not use SASL bind."</span>},
+    { <span class="hljs-string" style="color: rgb(255, 85, 255);">"bind"</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">'b'</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"BIND"</span>, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"Bind dn. For example: \"dc=example,dc=org\"."</span>},
+    { <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span> }
+};
+ 
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">struct</span> arguments
+{
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span>* hostname;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span>* password;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span>* username;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span>* bind_dn;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">bool</span> useSasl;
+};
+ 
+<span class="hljs-function" style="color: rgb(255, 255, 85);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> error_t <span class="hljs-title" style="color: rgb(170, 170, 170);">parse_opt</span><span class="hljs-params" style="color: rgb(136, 136, 255);">(<span class="hljs-keyword" style="color: rgb(255, 255, 85);">int</span> key, <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span> *arg, <span class="hljs-keyword" style="color: rgb(255, 255, 85);">struct</span> argp_state *state)</span>
+</span>{
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">struct</span> arguments *arguments = state-&gt;input;
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">switch</span> (key)
+    {
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">case</span> <span class="hljs-string" style="color: rgb(255, 85, 255);">'h'</span>:
+        arguments-&gt;hostname = arg;
+        <span class="hljs-keyword" style="color: rgb(255, 255, 85);">break</span>;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">case</span> <span class="hljs-string" style="color: rgb(255, 85, 255);">'u'</span>:
+        arguments-&gt;username = arg;
+        <span class="hljs-keyword" style="color: rgb(255, 255, 85);">break</span>;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">case</span> <span class="hljs-string" style="color: rgb(255, 85, 255);">'w'</span>:
+        arguments-&gt;password = arg;
+        <span class="hljs-keyword" style="color: rgb(255, 255, 85);">break</span>;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">case</span> <span class="hljs-string" style="color: rgb(255, 85, 255);">'s'</span>:
+        arguments-&gt;useSasl = <span class="hljs-literal" style="color: rgb(255, 85, 255);">true</span>;
+        <span class="hljs-keyword" style="color: rgb(255, 255, 85);">break</span>;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">case</span> <span class="hljs-string" style="color: rgb(255, 85, 255);">'b'</span>:
+        arguments-&gt;bind_dn = arg;
+        <span class="hljs-keyword" style="color: rgb(255, 255, 85);">break</span>;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">case</span> ARGP_KEY_ARG:
+        <span class="hljs-keyword" style="color: rgb(255, 255, 85);">return</span> <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>;
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">default</span>:
+        <span class="hljs-keyword" style="color: rgb(255, 255, 85);">return</span> ARGP_ERR_UNKNOWN;
+    }
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">return</span> <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>;
+}
+ 
+<span class="hljs-keyword" style="color: rgb(255, 255, 85);">static</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">struct</span> argp argp = { options, parse_opt, args_doc, doc, <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>, <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>, <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span> };
+ 
+<span class="hljs-function" style="color: rgb(255, 255, 85);"><span class="hljs-keyword" style="color: rgb(255, 255, 85);">int</span> <span class="hljs-title" style="color: rgb(170, 170, 170);">main</span><span class="hljs-params" style="color: rgb(136, 136, 255);">(<span class="hljs-keyword" style="color: rgb(255, 255, 85);">int</span> argc, <span class="hljs-keyword" style="color: rgb(255, 255, 85);">char</span> **argv)</span>
+</span>{
+    TALLOC_CTX* talloc_ctx = talloc_new(<span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>);
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">struct</span> arguments arguments;
+ 
+    arguments.hostname = <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>;
+    arguments.username = <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>;
+    arguments.password = <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>;
+    arguments.bind_dn = <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>;
+    arguments.useSasl = <span class="hljs-literal" style="color: rgb(255, 85, 255);">false</span>;
+ 
+    argp_parse(&amp;argp, argc, argv, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, &amp;arguments);
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">if</span> (arguments.hostname == <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>)
+    {
+        <span class="hljs-built_in" style="color: rgb(255, 85, 255);">printf</span>(<span class="hljs-string" style="color: rgb(255, 85, 255);">"Error: Missing required argument --host\n"</span>);
+        <span class="hljs-built_in" style="color: rgb(255, 85, 255);">exit</span>(EXIT_FAILURE);
+    }
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">if</span> (arguments.bind_dn == <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>)
+    {
+        <span class="hljs-built_in" style="color: rgb(255, 85, 255);">printf</span>(<span class="hljs-string" style="color: rgb(255, 85, 255);">"Error: Missing required argument --bind\n"</span>);
+        <span class="hljs-built_in" style="color: rgb(255, 85, 255);">exit</span>(EXIT_FAILURE);
+    }
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">const</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">int</span> update_interval = <span class="hljs-number" style="color: rgb(255, 85, 255);">1000</span>;
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">ld_config_t</span> *config = <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>;
+    config = ld_create_config(talloc_ctx, arguments.hostname, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, LDAP_VERSION3, <span class="hljs-string" style="color: rgb(255, 85, 255);">"dc=domain,dc=alt"</span>,
+                              arguments.username, arguments.password, !arguments.useSasl, <span class="hljs-literal" style="color: rgb(255, 85, 255);">false</span>, arguments.useSasl, <span class="hljs-literal" style="color: rgb(255, 85, 255);">false</span>,
+                              update_interval, <span class="hljs-string" style="color: rgb(255, 85, 255);">""</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">""</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">""</span>);
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">const</span> <span class="hljs-keyword" style="color: rgb(255, 255, 85);">int</span> exit_time = <span class="hljs-number" style="color: rgb(255, 85, 255);">10000</span>;
+ 
+    LDHandle *handle = <span class="hljs-literal" style="color: rgb(255, 85, 255);">NULL</span>;
+    ld_init(&amp;handle, config);
+ 
+    ld_install_default_handlers(handle);
+    ld_install_handler(handle, connection_on_update, update_interval);
+    ld_install_handler(handle, exit_callback, exit_time);
+    ld_install_error_handler(handle, connection_on_error);
+ 
+    ld_exec(handle);
+ 
+    ld_free(handle);
+ 
+    talloc_free(talloc_ctx);
+ 
+    <span class="hljs-keyword" style="color: rgb(255, 255, 85);">return</span> <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>;
+}</pre>
+			
+			
+			</p>
+			
+			
+			  			     <blockquote>
+                               <p>Program Structure</p>
+                               <p>Event Handling Functions:</p>
+                               <p>&nbsp; &nbsp;* exit_callback — triggers the program exit event;</p>
+                               <p>&nbsp; &nbsp;* connection_on_error — handles errors during LDAP operations;</p>
+                               <p>&nbsp; &nbsp;* connection_on_update — handles connection state updates and errors during connection establishment.</p>
+                               <p>Option Parsing:</p>
+                               <p>&nbsp; &nbsp; * parse_opt — parses command-line options using the argp library.</p>
+                               <p>Main Function:</p>
+                               <p>1. First, a new talloc context is created using the talloc_new function.</p>
+                               <p>2. The arguments structure is initialized to store command-line arguments.</p>
+                               <p>3. Command-line arguments are processed using the argp_parse function.</p>
+                               <p>4. Mandatory arguments, such as host and bind_dn, are checked, and the program exits if these arguments are not found.</p>
+                               <p>5. A configuration structure for connecting to the LDAP server is created using the ld_config function.</p>
+                               <p>6. The main library handle is initialized using the ld_init function.</p>
+                               <p>7. Default event handlers are installed using ld_install_default_handlers(handle).</p>
+                               <p>8. An event handler with the main program logic is set using ld_install_handler(handle, connection_on_update, update_interval).</p>
+                               <p>9. An exit handler that shuts down the program after 10 seconds is installed using ld_install_handler(handle, exit_callback, exit_time).&nbsp;</p>
+                               <p>10. Error handlers are set.</p>
+                               <p>11. Starting the main event cycle with  ld_exec.&nbsp;</p>
+                               <p>12. Error handlers are set.</p>
+                               <p>13. Resources are cleaned up using ld_free(handle) and talloc_free(talloc_ctx) functions.</p>
+                               <p>&nbsp;</p>
+                               <p>Error Handling</p>
+                               <p>&nbsp; &nbsp; * Errors, such as the inability to perform LDAP operations, lead to program termination with the appropriate error message.&nbsp;</p>
+                               <p>Error handling is implemented in the connection_on_error function. However, connection error handling occurs in the connection_on_update function.</p>
+
+                               <p>&nbsp;</p>
+                               <p>Notes</p>
+                               <p>&nbsp; &nbsp; * The program performs an LDAP search when the connection state changes to LDAP_CONNECTION_STATE_RUN. Objects for search are specified in the LDAP_DIRECTORY_ATTRS variable.&nbsp;</p>
+                               <p>&nbsp;</p>
+                               <p>Compilation</p>
+                               <p><a href="https://github.com/libdomain/libdomain-c-sample/blob/master/README.RU.md" target="_blank">Link</a></p>
+                               <p>To compile the program, you need to install the libdomain library:</p>
+                               <p><pre><code># apt-get install libdomain-devel libconfig-devel</code></pre></p>
+                               <p>Clone the example:</p>
+                               <p><pre><code>$ git clone https://github.com/libdomain/libdomain-c-sample</code></pre></p>
+                               <p>Use the following compilation command:</p>
+                               <p><pre><code>$ mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make -j `nproc`</code></pre></p>
+            </blockquote>
+
+			
+		  </div>  
+
+			  
+		</div>
+      </div>
+    </div>
+  </section>
+ 
+</main>
+<footer class="section pb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+	          	<table width="80%" border="0" align="center">
+  <tbody>
+    <tr>
+      <th scope="col" width="25%" align="center"><img src="../images/basealt.png" alt=""/></th>
+      <th scope="col" width="75%"><p>Phone: +7 (495) 123-47-99<br>
+                    	E-mail: org@basealt.ru<br>
+                   	 	Russian Federation, Moscow,<br>
+                      	Butyrskaya street, 75</p></th>
+    </tr>
+  </tbody>
+</table>
+				<table width="80%" border="0" align="center">
+  <tbody>
+    <tr>
+      <th scope="col" align="center"><p>© Basealt LLC , 2015–2023</p></th>
+    </tr>
+  </tbody>
+</table>
+		<table width="80%" border="0" align="center">
+  <tbody>
+    <tr>
+      <th scope="col" align="center"><p> <a href="https://vk.com/altlinux" target="_blank"> <img src="../images/icon26.png" alt="VK"></a>
+					  <a href="https://zen.yandex.ru/id/621e0fc88b26266f04745c3f" target="_blank"> <img src="../images/zen_yandex_icon_grey.svg" style="width:14px !important; height:14px !important;" alt="Яндекс Дзен"></a>
+					  <a href="https://www.youtube.com/channel/UCtCfzqL49AkFYQ7JQcL_iSw" target="_blank"> <img src="../images/icon29.png" alt="Youtube"></a>
+					  <a href="/feed.rss"> <img src="../images/icon30.png" alt="RSS"></a>
+					  <a href="https://teleg.one/basealtspo" target="_blank"> <img src="../images/icon31.png" alt="Telegram"></a> <a href="https://forum.altlinux.org/" target="_blank"> <img src="../images/icon32.png" alt="forum.altlinux.org"></a></p></th>
+    </tr>
+  </tbody>
+</table>
+
+				
+		</div>  </div>  </div>         
+				
+				
+  
+</footer>
+</body>
