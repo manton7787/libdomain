@@ -75,21 +75,28 @@
                    <p>&nbsp; 1. Скачать SDK .NET для Linux с официальной страницы загрузки .NET: Загрузка .NET&nbsp;</p>
                    <p>&nbsp; 2. Установить SDK .NET для Linux, следуя дополнительным инструкциям по установке, предоставленным для конкретного дистрибутива.&nbsp;</p>
                    <p>&nbsp;</p>
-                   <p>&nbsp; 3. Построение нативного модуля&nbsp;</p>
+                   <p>&nbsp; 3. Построение нативного модуля</p>
+                   <p>&nbsp;Для компиляции программы вам необходимо установить библиотеку libdomain.</p>
+                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-comment" style="color: rgb(85, 255, 255);"># apt-get install git libdomain-devel libconfig-devel cmake rpm-build glib2-devel</span></pre>
+				   <p>Клонируйте пример: </p>
+					<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ git <span class="hljs-built_in" style="color: rgb(255, 85, 255);">clone</span> https://github.com/libdomain/libdomain-powershell-sample&amp;&amp;cdlibdomain-powershell-sample</pre>
 <p>Для построения нативного модуля для libdomain необходимо выполнить следующие команды:&nbsp;</p>
                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cd native &amp;&amp; mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make -j `nproc`</pre>
                    <p>&nbsp; 4. Построение модуля на C#&nbsp;</p>
                    <p>Построение модуля на C# для PowerShell включает использование .NET SDK. Базовый план:</p>
-<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cd src &amp;&amp; dotnet build</pre>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ <span class="hljs-built_in" style="color: rgb(255, 85, 255);">cd</span> ../../src &amp;&amp; dotnet build</pre>
                    <p>&nbsp; 5. Объединение модулей&nbsp;</p>
                    <p>После построения нативного и C# модулей, возможно, потребуется их объединить.&nbsp;</p>
                    <p>Для этого необходимо скопировать бинарные модули в папку bin:&nbsp;</p>
-                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-comment" style="color: rgb(85, 255, 255);"># cp native/build/src/libdomain_wrapper.so ./bin/ &amp;&amp; cp src/bin/Debug/net7.0/LibDomain.dll ./bin/</span></pre>
+                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cd.. &amp;&amp;cp native/build/libdomain_wrapper.so ./bin/ &amp;&amp;cp src/bin/Debug/net7.0/LibDomain.dll ./bin/</pre>
           </blockquote>
 			
 			<blockquote>
-              <p>&nbsp; &nbsp;Как использовать&nbsp;</p>
-              <p>Запуск сценариев&nbsp;</p>
+              <p>&nbsp; &nbsp;Как использовать</p>
+              <p>&nbsp;Для этого примера предполагаем, что у пользователя есть сервер OpenLDAP, работающий на локальном хосте на порту 3890 с simple authentication. В целях упрощения примера данные для подключения содержатся в файле native/main.c вы можете изменить их при необходимости для работы со своим LDAP сервером.</p>
+              <p>&nbsp;Обратитесь к инструкции по настройке сервера LDAP если вам необходимо настроить LDAP сервер.</p>
+              <p>&nbsp;</p>
+<p>&nbsp; &nbsp;Запуск сценариев&nbsp;</p>
               <p>Для запуска сценариев следует запустить PowerShell:&nbsp;</p>
               <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">powershell</pre>
               <p>И выполнить команды:&nbsp;</p>
