@@ -60,8 +60,24 @@
 			     <blockquote>
                    <p>&nbsp;The provided example is a C program that demonstrates the use of the libdomain library to perform an LDAP search operation. The program establishes a connection to the LDAP server and executes a search reques to get RootDSE entry in the specified directory server.</p>
                    <p>&nbsp;</p>
+<p>Compilation&nbsp;</p>
+              <p><a href="https://github.com/libdomain/libdomain-qt-sample/blob/master/README.RU.md" target="_blank" >Link</a></p>
+              <p>To compile the program, you need to install the libdomain library:</p>
+              <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"> <span class="hljs-comment" style="color: rgb(85, 255, 255);">#&nbsp;apt-get install libdomain-devel libconfig-devel cmake rpm-build qt5-base-devel glib2-devel git</span></pre>
+              <p>Clone the example:</p>
+              <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ git <span class="hljs-built_in" style="color: rgb(255, 85, 255);">clone</span> https://github.com/libdomain/libdomain-qt-sample</pre>
+              <p>Use the following compilation command:</p>
+                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$&nbsp;<span class="hljs-built_in" style="color: rgb(255, 85, 255);">cd</span>&nbsp;libdomain-qt-sample&nbsp;&amp;&amp;&nbsp;mkdir build&nbsp;&amp;&amp;&nbsp;<span class="hljs-built_in" style="color: rgb(255, 85, 255);">cd</span>&nbsp;build&nbsp;&amp;&amp;&nbsp;cmake ..&nbsp;&amp;&amp;&nbsp;make -j&nbsp;`nproc`</pre>
+<p>&nbsp;</p>
                    <p>Usage:</p>
-                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ ./libdomain-qt-sample </pre>
+                   <p>&nbsp; The program has connection dialog to allow user to specify LDAP server connection parameters. For this example we assume user has OpenLDAP server running locally on localhost's port 389 with simple authentication.</p>
+                   <p>&nbsp; Please refer to LDAP server manual of how to setup server if you plan to use example with different LDAP server. </p>
+                   <p>&nbsp;When typing hostname in connection dialog be sure to specify LDAP protocol e.g. ldap or ldaps, for example to connect to OpenLDAP server on localhost with port 389 specify:</p>
+                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">hostname: ldap://localhost
+port: 389</pre>
+				   <p>&nbsp; Be sure to provide valid connection cridentials e.g. username and password. </p>
+					 <p>&nbsp; Samba and Windows Active Directory may support kerberos authentication depending on configuration. If server supports GSSAPI and kerberos be sure to select "Interactive bind/SASL/GSSAPI" checkbox. You also need to generate kerberos ticket in this case.&nbsp;</p>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$&nbsp;<span class="hljs-built_in" style="color: rgb(255, 85, 255);">cd</span>&nbsp;build&nbsp;&amp;&amp;&nbsp;./libdomain-qt-sample</pre>
                    <p>The program has connection dialog to allow user to specify LDAP server connection parameters:&nbsp;</p>
                    <p>&nbsp;</p>
                    <img src="../images/example-qt1.png" alt="Диалог подключения"/>
@@ -184,14 +200,7 @@ MainWindow::MainWindow(ConnectionSettings *settings, QWidget *parent)
               <p>Error Handling</p>
               <p>The error handling is performed automatically by the libdomain library using its built-in functions. If desired, you can set your own error handler using the function ld_install_error_handler(handle, connection_on_error) and passing in your own connection_on_error callback.</p>
               <p>&nbsp;</p>
-              <p>Compilation&nbsp;</p>
-              <p><a href="https://github.com/libdomain/libdomain-qt-sample/blob/master/README.RU.md" target="_blank" >Link</a></p>
-              <p>To compile the program, you need to install the libdomain library:</p>
-              <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-comment" style="color: rgb(85, 255, 255);"># apt-get install libdomain-devel libconfig-devel cmake rpm-build qt5-base-devel</span></pre>
-              <p>Clone the example:</p>
-              <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ git <span class="hljs-built_in" style="color: rgb(255, 85, 255);">clone</span> https://github.com/libdomain/libdomain-qt-sample</pre>
-              <p>Use the following compilation command:</p>
-                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ mkdir build &amp;&amp; <span class="hljs-built_in" style="color: rgb(255, 85, 255);">cd</span> build &amp;&amp; cmake .. &amp;&amp; make -j `nproc`</pre>
+              
             </blockquote>
 			  			
 		  </div>  

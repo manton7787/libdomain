@@ -76,21 +76,28 @@
                    <p>&nbsp; 2. Install the .NET SDK for Linux. Make sure to follow any additional setup instructions provided for your distribution.</p>
                    <p>&nbsp;</p>
                    <p>&nbsp; 3. Building Native Module</p>
+                   <p>&nbsp; To compile the program, you need to install the libdomain library.</p>
+                  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-comment" style="color: rgb(85, 255, 255);"># apt-get install git libdomain-devel libconfig-devel cmake rpm-build glib2-devel</span></pre>
+					 
+                  <p>&nbsp; Clone the example:</p>
+                <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ git <span class="hljs-built_in" style="color: rgb(255, 85, 255);">clone</span>&nbsp;https://github.com/libdomain/libdomain-powershell-sample&nbsp;&amp;&amp;&nbsp;<span class="hljs-built_in" style="color: rgb(255, 85, 255);">cd</span>&nbsp;libdomain-powershell-sample</pre>
+               
 <p>To build the native module for libdomain, follow these steps:</p>
-                  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cd native &amp;&amp; mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make -j `nproc`</pre>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cd native &amp;&amp; mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make -j `nproc`</pre>
                    <p>&nbsp; 4. Building C# Module</p>
                    <p>Building a C# module for PowerShell involves using the .NET SDK. Here's a basic outline:</p>
-<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cd src &amp;&amp; dotnet build</pre>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ <span class="hljs-built_in" style="color: rgb(255, 85, 255);">cd</span> ../../src &amp;&amp; dotnet build</pre>
                    <p>&nbsp; 5. Combining Modules</p>
                    <p>Once you have built the native and C# modules, you may need to combine them.</p>
                    <p>&nbsp;To do so copy binary modules in bin folder:&nbsp;</p>
 
-                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-comment" style="color: rgb(85, 255, 255);"># cp native/build/src/libdomain_wrapper.so ./bin/ &amp;&amp; cp src/bin/Debug/net7.0/LibDomain.dll ./bin/</span></pre>
+              <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$&nbsp;<span class="hljs-built_in" style="color: rgb(255, 85, 255);">cd</span> .. &amp;&amp; cp native/build/libdomain_wrapper.so ./bin/ &amp;&amp; cp src/bin/Debug/net7.0/LibDomain.dll ./bin/</pre>
           </blockquote>
 			
 			<blockquote>
               <p>&nbsp; &nbsp;How to Use</p>
-              <p>Launching Scripts</p>
+              <p>&nbsp;For this example we assume user has OpenLDAP server running locally on localhost's port 3890 with simple authentication. For the sake of simplicity our example application has this values hardcoded in native/main.c you can change them according to your setup. Please refer to LDAP server manual of how to setup server if you plan to use example with different LDAP server.&nbsp;</p>
+<p>&nbsp; Launching Scripts</p>
               <p>To use the scripts and modules you've built, follow these general steps:</p>
               <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">powershell</pre>
              
