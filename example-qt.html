@@ -63,29 +63,30 @@
 <p>Компиляция&nbsp;</p>
               <p><a href="https://github.com/libdomain/libdomain-qt-sample/blob/master/README.RU.md" target="_blank" >Ссылка на пример</a></p>
               <p>Для компиляции программы необходимо установить библиотеку libdomain:&nbsp;</p>
-			  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"># apt-get install git libdomain-devel libconfig-devel cmake rpm-build qt5-base-devel glib2-devel</pre>		 
+			 <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"># apt-get install git libdomain-devel libconfig-devel cmake rpm-build qt5-base-devel glib2-devel krb5-kinit</pre>	 
 				
               <p>Далее следует склонировать пример:&nbsp;</p>
               <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ git <span class="hljs-built_in" style="color: rgb(255, 85, 255);">clone</span> https://github.com/libdomain/libdomain-qt-sample</pre>
               <p>Команда компиляции:&nbsp;</p>
-			  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cdlibdomain-qt-sample &amp;&amp;mkdir build &amp;&amp;cdbuild &amp;&amp;cmake .. &amp;&amp;make -j `nproc`</pre> 
+			 <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">cdlibdomain-qt-sample &amp;&amp;mkdir build &amp;&amp;cdbuild &amp;&amp;cmake .. &amp;&amp;make -j `nproc`</pre>
 			       <p>Использование программы:&nbsp;</p>
 			       <p>&nbsp; &nbsp; Программа имеет диалог подключения, позволяющий пользователю указать
-параметры подключения к серверу LDAP.&nbsp;</p>
-		           &nbsp; &nbsp; Для этого примера предполагаем, что у пользователя есть сервер OpenLDAP,
-			       работающий на локальном хосте на порту 389 с simple authentication, для
-			       него не требуется билет Kerberos.
-                   <p>&nbsp; &nbsp; Обратитесь к инструкции по настройке сервера LDAP если вам необходимо настроить LDAP сервер.</p>
-                   <p>&nbsp;Введите имя хоста в диалоговом окне подключения, укажите протокол LDAP, например, ldap или ldaps, чтобы подключиться к серверу LDAP на localhost с порт 389. Например:</p>
-                  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">хост: ldap://localhost
+			         параметры подключения к серверу LDAP.&nbsp;</p>
+			       <p>&nbsp; &nbsp; Для этого примера предполагается, что у пользователя есть сервер OpenLDAP, работающий на локальном хосте на порту 389 с simple authentication, для него не требуется билет Kerberos.</p>
+			       <p>&nbsp; &nbsp; Если необходимо настроить LDAP сервер, то нужно обратиться к инструкции по настройке сервера LDAP.</p>
+			       <p>&nbsp; &nbsp; В диалоговом окне подключения необходимо ввести имя хоста, указать протокол LDAP, например, ldap или ldaps, чтобы подключиться к серверу LDAP на localhost с порт 389. Например:</p>
+			      <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">хост: ldap://localhost
 порт: 389</pre>
-                  <p>&nbsp; &nbsp; Убедитесь что используете правильные данные для подключения, такие как имя пользователя и пароль.</p>
-                  <p>&nbsp; &nbsp; Samba и Windows Active Directory могут поддерживать аутентификацию Kerberos в зависимости от конфигурации. Если сервер поддерживает GSSAPI и Kerberos, убедитесь, что вы выбираете флажок "Interactive bind/SASL/GSSAPI". В этом случае вам также может потребоваться сгенерировать билет Kerberos.</p>
-                  <p>&nbsp;</p>
-<p>Запуск программы:&nbsp;</p>
-					 <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cdbuild &amp;&amp;./libdomain-qt-sample</pre>
-					 
-                   <p>Будет открыто диалоговое окно, где пользователь может указать параметры подключения к серверу LDAP:&nbsp;</p>
+                  <p>&nbsp; &nbsp; Необходимо убедиться, что используются правильные данные для подключения, такие как имя пользователя и пароль.</p>
+                  <p>&nbsp; &nbsp; Samba и Windows Active Directory могут поддерживать аутентификацию Kerberos в зависимости от конфигурации. Если сервер поддерживает GSSAPI и Kerberos, необходимо убедиться, что выбран флажок "Interactive bind/SASL/GSSAPI". В этом случае также может потребоваться сгенерировать билет Kerberos.</p>
+                  <p>&nbsp; &nbsp; Чтобы сгенерировать билет kerberos, потребуется выполнить команду init:</p>
+                  <p>&nbsp; &nbsp; kinit <a href="administrator@example.org">administrator@example.org</a></p>
+               
+				&nbsp; &nbsp; Далее необходимо изменить имя пользователя и доменное имя в соответствии с настройками имеющегося сервера LDAP.
+                <p>&nbsp; &nbsp; Чтобы запустить приложение из директории libdomain-qt-sample, необходимо выполнить следующую команду:</p>
+                <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cd build &amp;&amp; ./libdomain-qt-test</pre>
+              					 
+                   <p>&nbsp; &nbsp;Будет открыто диалоговое окно, где пользователь может указать параметры подключения к серверу LDAP:&nbsp;</p>
                    <p>&nbsp;</p>
                    <img src="images/example-qt1.png" alt="Диалог подключения"/>
                    <p> Основное окно программы:&nbsp;</p>

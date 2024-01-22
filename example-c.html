@@ -63,16 +63,21 @@
                    <p>&nbsp; &nbsp; Компиляция&nbsp;</p>
                                <p><a href="https://github.com/libdomain/libdomain-c-sample/blob/master/README.RU.md" target="_blank">Ссылка на пример</a></p>
                                <p>Для компиляции программы необходимо установить библиотеку libdomain:</p>
-                               <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-comment" style="color: rgb(85, 255, 255);"># apt-get install libdomain-devel libconfig-devel git</span></pre>
+                               <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-comment" style="color: rgb(85, 255, 255);"># apt-getinstall git cmake make gcc krb5-kinit libdomain-devel
+libconfig-devel</span></pre>
                                <p>Далее следует склонировать пример:&nbsp;</p>
                               <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ git <span class="hljs-built_in" style="color: rgb(255, 85, 255);">clone</span> https://github.com/libdomain/libdomain-c-sample</pre>
                                <p>Команда компиляции:</p>
-                               <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cdlibdomain-c-sample &amp;&amp;mkdir build &amp;&amp;cdbuild &amp;&amp;cmake .. &amp;&amp;make -j `nproc`</pre>
+                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">cd libdomain-c-sample &amp;&amp; mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make -j `nproc`</pre>
 			
 					  <p>&nbsp;Использование программы&nbsp;</p>
 		  
-<p>&nbsp; &nbsp; Программа принимает аргументы командной строки для указания параметров соединения с сервером LDAP и параметров поиска:</p>
-                   <p>&nbsp;</p>
+                   <p>&nbsp; &nbsp; Программа принимает аргументы командной строки для указания параметров соединения с сервером LDAP и параметров поиска. Для этого примера мы предполагаем что у нас развёрнут тестовый стенд на основе Samba DC названием|dc|в домене|example.org &lt;<a href="http://example.org">http://example.org</a>&gt;|, в котором LDAP сервис работает на порту 389.</p>
+                   <p>&nbsp; &nbsp; &nbsp;Убедитесь что используете правильные данные для подключения, такие как имя пользователя и пароль и.т.д. В случае если имя домена или сервис LDAP отличаются вам может потребоваться изменить параметры передаваемые примеру в соответствии с настройками сервиса LDAP.</p>
+                   <p>&nbsp; &nbsp; &nbsp;Samba и Windows Active Directory могут поддерживать аутентификацию Kerberos в зависимости от конфигурации. Если сервер поддерживает GSSAPI и Kerberos, убедитесь, что вы передали параметер "--sasl". В этом случае вам также может потребоваться сгенерировать билет Kerberos для этого может потребоваться выполнить команду kinit.</p>
+                   <p><a href=" kinitadministrator@example.org">&nbsp;kinitadministrator@example.org</a></p>
+                      <p>&nbsp; &nbsp; &nbsp;Для запуска примера выполните:</p>
+<p>&nbsp;</p>
 <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ ./libdomain-c-sample --host ldap://dc.example.org:389 --user administrator --pass password --bind <span class="hljs-string" style="color: rgb(255, 85, 255);">"dc=example,dc=org"</span> --sasl</pre>
                    <p>&nbsp; &nbsp; Опции командной строки:</p>
                    <p>&nbsp; &nbsp; &nbsp; &nbsp;* --host (-h) — сервер LDAP в формате «протокол://адрес:порт», например, «ldap://example.org:389»;</p>
@@ -148,7 +153,7 @@
     { <span class="hljs-string" style="color: rgb(255, 85, 255);">"host"</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">'h'</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"HOST"</span>, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"Host. Use protocol://adress:port format e.g. ldap://dc.example.org:389."</span>},
     { <span class="hljs-string" style="color: rgb(255, 85, 255);">"user"</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">'u'</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"USER"</span>, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"User name."</span>},
     { <span class="hljs-string" style="color: rgb(255, 85, 255);">"pass"</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">'w'</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"PASS"</span>, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"Password."</span>},
-    { <span class="hljs-string" style="color: rgb(255, 85, 255);">"sasl"</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">'s'</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"SASL"</span>, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"Whether or not use SASL bind."</span>},
+    { <span class="hljs-string" style="color: rgb(255, 85, 255);">"sasl"</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">'s'</span>, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"Whether or not use SASL bind."</span>},	
     { <span class="hljs-string" style="color: rgb(255, 85, 255);">"bind"</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">'b'</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"BIND"</span>, <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span>, <span class="hljs-string" style="color: rgb(255, 85, 255);">"Bind dn. For example: \"dc=example,dc=org\"."</span>},
     { <span class="hljs-number" style="color: rgb(255, 85, 255);">0</span> }
 };

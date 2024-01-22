@@ -62,7 +62,7 @@
                    <p>&nbsp; 1. Установка PowerShell на Linux&nbsp;</p>
                    <p>Чтобы построить библиотеку libdomain и модули PowerShell на Linux, сначала необходимо установить PowerShell.&nbsp;</p>
                    <p>На дистрибутивах «Альт» для этого достаточно установить пакет powershell:&nbsp;</p>
-                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">apt-get <span class="hljs-keyword" style="color: rgb(255, 255, 85);">install</span> powershell</pre>
+                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"># apt-get <span class="hljs-keyword" style="color: rgb(255, 255, 85);">install</span> powershell</pre>
                    <p>На других дистрибутивах можно выполнить следующие шаги:&nbsp;</p>
                    <p>&nbsp; 1. Скачать пакет для требуемого дистрибутива с официальной страницы выпусков PowerShell на GitHub: Релизы PowerShell&nbsp;</p>
                    <p>&nbsp; 2. Установить пакет, следуя инструкциям по установке, предоставленным для конкретного дистрибутива.&nbsp;</p>
@@ -70,9 +70,9 @@
                    <p>&nbsp; 2. Установка .NET и SDK на Linux&nbsp;</p>
 <p>Следующий шаг после установки PowerShell — настройка среды .NET и необходимых SDK.&nbsp;</p>
                    <p>На дистрибутивах «Альт» для этого достаточно установить пакет dotnet-sdk-7.0:&nbsp;</p>
-                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">apt-get <span class="hljs-keyword" style="color: rgb(255, 255, 85);">install</span> dotnet-sdk-<span class="hljs-number" style="color: rgb(255, 85, 255);">7.0</span></pre>
+                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"># apt-get <span class="hljs-keyword" style="color: rgb(255, 255, 85);">install</span> dotnet-sdk-<span class="hljs-number" style="color: rgb(255, 85, 255);">7.0</span></pre>
                    <p>На других дистрибутивах можно выполнить следующие шаги:&nbsp;</p>
-                   <p>&nbsp; 1. Скачать SDK .NET для Linux с официальной страницы загрузки .NET: Загрузка .NET&nbsp;</p>
+                   <p>&nbsp; 1. Скачать SDK .NET для Linux с официальной страницы загрузки .NET: <a href="https://dotnet.microsoft.com/en-us/download">Загрузка .NET</a>&nbsp;</p>
                    <p>&nbsp; 2. Установить SDK .NET для Linux, следуя дополнительным инструкциям по установке, предоставленным для конкретного дистрибутива.&nbsp;</p>
                    <p>&nbsp;</p>
                    <p>&nbsp; 3. Построение нативного модуля</p>
@@ -86,16 +86,21 @@
                    <p>Построение модуля на C# для PowerShell включает использование .NET SDK. Базовый план:</p>
 <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ <span class="hljs-built_in" style="color: rgb(255, 85, 255);">cd</span> ../../src &amp;&amp; dotnet build</pre>
                    <p>&nbsp; 5. Объединение модулей&nbsp;</p>
-                   <p>После построения нативного и C# модулей, возможно, потребуется их объединить.&nbsp;</p>
+                   <p>&nbsp; &nbsp; После построения нативного и C# модулей, возможно, потребуется их объединить.&nbsp;</p>
                    <p>Для этого необходимо скопировать бинарные модули в папку bin:&nbsp;</p>
-                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cd.. &amp;&amp;cp native/build/libdomain_wrapper.so ./bin/ &amp;&amp;cp src/bin/Debug/net7.0/LibDomain.dll ./bin/</pre>
+                   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cd .. &amp;&amp; cp native/build/libdomain_wrapper.so ./bin/ &amp;&amp; cp src/bin/Debug/net7<span class="hljs-number" style="color: rgb(255, 85, 255);">.0</span>/LibDomain.dll ./bin/</pre>
           </blockquote>
 			
 			<blockquote>
               <p>&nbsp; &nbsp;Как использовать</p>
-              <p>&nbsp;Для этого примера предполагаем, что у пользователя есть сервер OpenLDAP, работающий на локальном хосте на порту 3890 с simple authentication. В целях упрощения примера данные для подключения содержатся в файле native/main.c вы можете изменить их при необходимости для работы со своим LDAP сервером.</p>
-              <p>&nbsp;Обратитесь к инструкции по настройке сервера LDAP если вам необходимо настроить LDAP сервер.</p>
               <p>&nbsp;</p>
+              &nbsp; &nbsp;Для этого примера предполагается, что у пользователя есть сервер
+              OpenLDAP, работающий на локальном хосте на порту 3890 с simple
+              authentication. В целях упрощения примера данные для подключения
+              содержатся в файле native/main.c. При необходимости для работы со другим
+              LDAP сервером их необходимо изменить.
+<p>&nbsp; &nbsp; Если необходимо настроить LDAP сервер, то нужно обратиться к инструкции по настройке сервера LDAP.</p>
+
 <p>&nbsp; &nbsp;Запуск сценариев&nbsp;</p>
               <p>Для запуска сценариев следует запустить PowerShell:&nbsp;</p>
               <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">powershell</pre>
