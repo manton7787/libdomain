@@ -68,7 +68,7 @@
               <p>Далее следует склонировать пример:&nbsp;</p>
               <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ git <span class="hljs-built_in" style="color: rgb(255, 85, 255);">clone</span> https://github.com/libdomain/libdomain-qt-sample</pre>
               <p>Команда компиляции:&nbsp;</p>
-			 <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">cdlibdomain-qt-sample &amp;&amp;mkdir build &amp;&amp;cdbuild &amp;&amp;cmake .. &amp;&amp;make -j `nproc`</pre>
+			 <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"># cd libdomain-qt-sample &amp;&amp; mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make -j `nproc`</pre>
 			       <p>Использование программы:&nbsp;</p>
 			       <p>&nbsp; &nbsp; Программа имеет диалог подключения, позволяющий пользователю указать
 			         параметры подключения к серверу LDAP.&nbsp;</p>
@@ -80,7 +80,7 @@
                   <p>&nbsp; &nbsp; Необходимо убедиться, что используются правильные данные для подключения, такие как имя пользователя и пароль.</p>
                   <p>&nbsp; &nbsp; Samba и Windows Active Directory могут поддерживать аутентификацию Kerberos в зависимости от конфигурации. Если сервер поддерживает GSSAPI и Kerberos, необходимо убедиться, что выбран флажок "Interactive bind/SASL/GSSAPI". В этом случае также может потребоваться сгенерировать билет Kerberos.</p>
                   <p>&nbsp; &nbsp; Чтобы сгенерировать билет kerberos, потребуется выполнить команду init:</p>
-                  <p>&nbsp; &nbsp; kinit <a href="administrator@example.org">administrator@example.org</a></p>
+                  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">kinit administrator@example.org</pre>
                
 				&nbsp; &nbsp; Далее необходимо изменить имя пользователя и доменное имя в соответствии с настройками имеющегося сервера LDAP.
                 <p>&nbsp; &nbsp; Чтобы запустить приложение из директории libdomain-qt-sample, необходимо выполнить следующую команду:</p>

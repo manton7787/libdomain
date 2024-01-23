@@ -63,7 +63,7 @@
                    <p>&nbsp; &nbsp; Компиляция&nbsp;</p>
                                <p><a href="https://github.com/libdomain/libdomain-c-sample/blob/master/README.RU.md" target="_blank">Ссылка на пример</a></p>
                                <p>Для компиляции программы необходимо установить библиотеку libdomain:</p>
-                               <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-comment" style="color: rgb(85, 255, 255);"># apt-getinstall git cmake make gcc krb5-kinit libdomain-devel
+                               <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"><span class="hljs-comment" style="color: rgb(85, 255, 255);"># apt-get install git cmake make gcc krb5-kinit libdomain-devel
 libconfig-devel</span></pre>
                                <p>Далее следует склонировать пример:&nbsp;</p>
                               <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ git <span class="hljs-built_in" style="color: rgb(255, 85, 255);">clone</span> https://github.com/libdomain/libdomain-c-sample</pre>
@@ -72,10 +72,10 @@ libconfig-devel</span></pre>
 			
 					  <p>&nbsp;Использование программы&nbsp;</p>
 		  
-                   <p>&nbsp; &nbsp; Программа принимает аргументы командной строки для указания параметров соединения с сервером LDAP и параметров поиска. Для этого примера мы предполагаем что у нас развёрнут тестовый стенд на основе Samba DC названием|dc|в домене|example.org &lt;<a href="http://example.org">http://example.org</a>&gt;|, в котором LDAP сервис работает на порту 389.</p>
+                   <p>&nbsp; &nbsp; Программа принимает аргументы командной строки для указания параметров соединения с сервером LDAP и параметров поиска. Для этого примера мы предполагаем что у нас развёрнут тестовый стенд на основе Samba DC названием dc в домене example.org, в котором LDAP сервис работает на порту 389.</p>
                    <p>&nbsp; &nbsp; &nbsp;Убедитесь что используете правильные данные для подключения, такие как имя пользователя и пароль и.т.д. В случае если имя домена или сервис LDAP отличаются вам может потребоваться изменить параметры передаваемые примеру в соответствии с настройками сервиса LDAP.</p>
                    <p>&nbsp; &nbsp; &nbsp;Samba и Windows Active Directory могут поддерживать аутентификацию Kerberos в зависимости от конфигурации. Если сервер поддерживает GSSAPI и Kerberos, убедитесь, что вы передали параметер "--sasl". В этом случае вам также может потребоваться сгенерировать билет Kerberos для этого может потребоваться выполнить команду kinit.</p>
-                   <p><a href=" kinitadministrator@example.org">&nbsp;kinitadministrator@example.org</a></p>
+                  <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ kinit administrator@example.org</pre>
                       <p>&nbsp; &nbsp; &nbsp;Для запуска примера выполните:</p>
 <p>&nbsp;</p>
 <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ ./libdomain-c-sample --host ldap://dc.example.org:389 --user administrator --pass password --bind <span class="hljs-string" style="color: rgb(255, 85, 255);">"dc=example,dc=org"</span> --sasl</pre>
