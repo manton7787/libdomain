@@ -63,7 +63,7 @@
 <p>Compilation&nbsp;</p>
               <p><a href="https://github.com/libdomain/libdomain-qt-sample/blob/master/README.RU.md" target="_blank" >Link</a></p>
               <p>To compile the program, you need to install the libdomain library:</p>
-              <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"> <span class="hljs-comment" style="color: rgb(85, 255, 255);">#&nbsp;apt-get install libdomain-devel libconfig-devel cmake rpm-build qt5-base-devel glib2-devel git</span></pre>
+              <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);"> <span class="hljs-comment" style="color: rgb(85, 255, 255);"># apt-get install libdomain-devel libconfig-devel cmake rpm-build qt5-base-devel glib2-devel krb5-kinit</span></pre>
               <p>Clone the example:</p>
               <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ git <span class="hljs-built_in" style="color: rgb(255, 85, 255);">clone</span> https://github.com/libdomain/libdomain-qt-sample</pre>
               <p>Use the following compilation command:</p>
@@ -76,8 +76,12 @@
                    <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">hostname: ldap://localhost
 port: 389</pre>
 				   <p>&nbsp; Be sure to provide valid connection cridentials e.g. username and password. </p>
-					 <p>&nbsp; Samba and Windows Active Directory may support kerberos authentication depending on configuration. If server supports GSSAPI and kerberos be sure to select "Interactive bind/SASL/GSSAPI" checkbox. You also need to generate kerberos ticket in this case.&nbsp;</p>
-<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$&nbsp;<span class="hljs-built_in" style="color: rgb(255, 85, 255);">cd</span>&nbsp;build&nbsp;&amp;&amp;&nbsp;./libdomain-qt-sample</pre>
+				   <p>&nbsp; Samba and Windows Active Directory may support kerberos authentication depending on configuration. If server supports GSSAPI and kerberos be sure to select "Interactive bind/SASL/GSSAPI" checkbox. You also need to generate kerberos ticket in this case.&nbsp;</p>
+				   <p>&nbsp; &nbsp; To generate kerberos ticket you may need to run kinit command:</p>
+				   <pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ kinit administrator@example.org</pre>
+					 
+					 <p>&nbsp;Adjust username and domain name according to your LDAP server setup. To launch an application from libdomain-qt-sample directory run following command.</p>
+<pre class="hljs" style="display: block; overflow-x: auto; padding: 0.5em; background: rgb(0, 0, 0); color: rgb(170, 170, 170);">$ cd build &amp;&amp; ./libdomain-qt-test</pre>
                    <p>The program has connection dialog to allow user to specify LDAP server connection parameters:&nbsp;</p>
                    <p>&nbsp;</p>
                    <img src="../images/example-qt1.png" alt="Диалог подключения"/>
